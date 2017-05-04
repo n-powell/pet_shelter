@@ -41,4 +41,14 @@ describe("#save") do
   end
 end
 
+describe(".find") do
+  it("returns a animal its ID") do
+    animal1 = Animal.new({:name => "PupPup", :id => 6, :person_id => 2})
+    animal1.save()
+    animal2 = Animal.new({:name => "KitCat", :id => 4, :person_id => 3})
+    animal2.save()
+    expect(Animal.find(animal2.id())).to(eq(animal2))
+  end
+end
+
 end
