@@ -24,5 +24,9 @@ class Animal
     self.name().==(another_animal.name()).&(self.id().==(another_animal.id()))
   end
 
+  define_method(:save) do
+    result = DB.exec("INSERT INTO animals (name, person_id) VALUES ('#{@name}', '#{@person_id}') RETURNING id;")
+    @id = result.first().fetch("id").to_i()
+  end
 
 end

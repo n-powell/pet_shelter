@@ -26,4 +26,19 @@ describe("Animal") do
   end
 end
 
+  describe("#person_id") do
+  it("tells you the animals name") do
+    animal = Animal.new({:name => "Bugsy", :id => nil, :person_id => 2})
+    expect(animal.person_id()).to(eq(2))
+  end
+end
+
+describe("#save") do
+  it("lets you save the animal to the database") do
+    animal1 = Animal.new({:name => "Bugsy", :id => nil, :person_id => 2})
+    animal1.save()
+    expect(Animal.all()).to(eq([animal1]))
+  end
+end
+
 end
